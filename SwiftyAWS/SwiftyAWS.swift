@@ -35,20 +35,23 @@ open class SwiftyAWS {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
     }
     
+    private func imageToUse(_ image: UIImage?) -> UIImage? {
+        if directImage != nil {
+            return directImage!
+        } else if image != nil {
+            return image!
+        } else {
+            print("Improper use of the API: This method must contain a UIImage reference")
+            return nil
+        }
+    }
+    
     open func upload(image: UIImage? = nil,
                      type: ImageType,
                      name: FileExtension,
                      completionHandler: @escaping ImageUploadHandler) {
         
-        var imageToUse: UIImage
-        if directImage != nil {
-            imageToUse = directImage!
-        } else if image != nil {
-            imageToUse = image!
-        } else {
-            print("Improper use of the API: This method must contain a UIImage reference")
-            return
-        }
+        guard let imageToUse = imageToUse(image) else { return }
         
         let fileTypeExtension = type.rawValue
         guard let fileName = imageToUse.convertToBase64(fileType: type)?.sha256().appending(fileTypeExtension) else {
@@ -73,7 +76,7 @@ open class SwiftyAWS {
     func upload(withKey key: String, body: URL, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
         
         guard let request = AWSS3TransferManagerUploadRequest() else { return }
-        guard let bucket = bucketName else { return }
+        guard let bucket = bucketName else { completionHandler(nil, .improperUse); return }
         request.bucket = bucket
         request.key = key
         request.body = body
@@ -114,6 +117,7 @@ public enum ErrorHandling: Error {
     case errorNaming
     case errorCreatingTempDir
     case errorWritingToFile
+    case improperUse
 }
 
 extension UIImage {
