@@ -8,12 +8,15 @@
 
 import Foundation
 import AWSCognito
+import AWSS3
 import UIKit
 import CryptoSwift
 
 open class SwiftyAWS {
     
-    var bucketName: String?
+    open var bucketName: String?
+    
+    open var endpointURL: URL = AWSS3.default().configuration.endpoint.url
     
     open static var main = SwiftyAWS()
 
@@ -39,6 +42,32 @@ open class SwiftyAWS {
             print("Creating 'upload' directory failed. Error: \(error)")
         }
     }
+    
+    func upload(withKey key: String, body: URL, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
+        
+        guard let request = AWSS3TransferManagerUploadRequest() else { return }
+        guard let bucket = bucketName else { return }
+        request.bucket = bucket
+        request.key = key
+        request.body = body
+        request.acl = .publicReadWrite
+        
+        let transferManager = AWSS3TransferManager.default()
+        transferManager.upload(request).continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
+            if let _ = task.error {
+                completionHandler(nil, .errorUploading)
+                return nil
+            }
+            
+            if task.result != nil {
+                let pathURL = self.endpointURL.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
+                completionHandler(pathURL, nil)
+                return nil
+            }
+            
+            return nil
+        }
+    }
 }
 
 public enum ImageType: String {
@@ -60,14 +89,17 @@ public enum ErrorHandling: Error {
 
 extension UIImage {
     
-    public typealias UploadToS3CompletionHanndler = (_ success: String?, _ error: ErrorHandling?) -> Void
+    public typealias UploadToS3CompletionHanndler = (_ path: ImagePath?, _ error: ErrorHandling?) -> Void
+    public typealias ImagePath = String
     
     open var s3: SwiftyAWS {
         return SwiftyAWS.main
     }
     
-    open func upload(type: ImageType, name: FileNamingConvetion, completionHandler: UploadToS3CompletionHanndler) {
-        guard let fileName = self.convertToBase64(fileType: type)?.sha256().appending(".png") else {
+    open func upload(type: ImageType, name: FileNamingConvetion, completionHandler: @escaping UploadToS3CompletionHanndler) {
+        
+        let fileTypeExtension = type.rawValue
+        guard let fileName = self.convertToBase64(fileType: type)?.sha256().appending(fileTypeExtension) else {
             completionHandler(nil, .errorNaming)
             return
         }
@@ -77,10 +109,27 @@ extension UIImage {
             return
         }
         
-        let imageData = UIImagePNGRepresentation(self)
+        let imageData = self.imageRepresentation(fileType: type)
         guard let _ = try? imageData?.write(to: fileURL, options: Data.WritingOptions.atomic) else {
             completionHandler(nil, .errorWritingToFile)
             return
+        }
+        
+        s3.upload(withKey: fileName, body: fileURL, completionHandler: completionHandler)
+    }
+    
+    func imageRepresentation(fileType: ImageType) -> Data? {
+        switch fileType {
+        case .png:
+            guard let png = UIImagePNGRepresentation(self) else {
+                return nil
+            }
+            return png
+        default:
+            guard let jpeg = UIImageJPEGRepresentation(self, 1.0) else {
+                return nil
+            }
+            return jpeg
         }
     }
     
