@@ -9,6 +9,7 @@
 import Foundation
 import AWSCognito
 import UIKit
+import CryptoSwift
 
 open class SwiftyAWS {
     
@@ -40,19 +41,62 @@ open class SwiftyAWS {
     }
 }
 
-enum ImageType: String {
+public enum ImageType: String {
     case png = ".png"
     case jpeg = ".jpeg"
 }
 
+public enum FileNamingConvetion {
+    case effient
+    case custom(String)
+}
+
+public enum ErrorHandling: Error {
+    case errorUploading
+    case errorNaming
+    case errorCreatingTempDir
+    case errorWritingToFile
+}
+
 extension UIImage {
     
-    var s3: SwiftyAWS {
+    public typealias UploadToS3CompletionHanndler = (_ success: String?, _ error: ErrorHandling?) -> Void
+    
+    open var s3: SwiftyAWS {
         return SwiftyAWS.main
     }
     
-    func upload() {
+    open func upload(type: ImageType, name: FileNamingConvetion, completionHandler: UploadToS3CompletionHanndler) {
+        guard let fileName = self.convertToBase64(fileType: type)?.sha256().appending(".png") else {
+            completionHandler(nil, .errorNaming)
+            return
+        }
         
+        guard let fileURL = s3.temporaryDirectoryPath?.appendingPathComponent(fileName) else {
+            completionHandler(nil, .errorCreatingTempDir)
+            return
+        }
+        
+        let imageData = UIImagePNGRepresentation(self)
+        guard let _ = try? imageData?.write(to: fileURL, options: Data.WritingOptions.atomic) else {
+            completionHandler(nil, .errorWritingToFile)
+            return
+        }
     }
-}
+    
+    func convertToBase64(fileType: ImageType) -> String? {
+        switch fileType {
+        case .png:
+            guard let png = UIImagePNGRepresentation(self) else {
+                return nil
+            }
+            return png.base64EncodedString()
+        default:
+            guard let jpeg = UIImageJPEGRepresentation(self, 1.0) else {
+                return nil
+            }
+            return jpeg.base64EncodedString()
+        }
+    }
 
+}

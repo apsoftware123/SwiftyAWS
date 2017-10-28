@@ -4,17 +4,20 @@ PODS:
   - AWSCore (2.6.4)
   - AWSS3 (2.6.4):
     - AWSCore (= 2.6.4)
+  - CryptoSwift (0.8.0)
 
 DEPENDENCIES:
   - AWSCognito
   - AWSCore
   - AWSS3
+  - CryptoSwift (~> 0.8)
 
 SPEC CHECKSUMS:
   AWSCognito: 730f6795c78817ff86701844fb22ca40d129494b
   AWSCore: f5611be1c3edc38dbf9d6da0a5d2b6c4841d1c05
   AWSS3: f7a10f4c6bae46efc9a4588a1480a6761edcbc45
+  CryptoSwift: f81907430ebbe38b8404b4f6fb40f3c576a8755f
 
-PODFILE CHECKSUM: 0401f6e44eb90ffbcf5eade1d98ad802ace6c6d5
+PODFILE CHECKSUM: 0120a1b674426f1ecb3f48182c4084badd39c211
 
 COCOAPODS: 1.3.1
