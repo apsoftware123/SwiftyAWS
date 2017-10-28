@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2FEBB29954B1B472B5F8EE /* Pods_SwiftyAWSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875FAF283437FBEE6F8FCB6E /* Pods_SwiftyAWSTests.framework */; };
 		7C44AEEC1FA4B896003BC891 /* SwiftyAWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AEE21FA4B896003BC891 /* SwiftyAWS.framework */; };
 		7C44AEF11FA4B896003BC891 /* SwiftyAWSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44AEF01FA4B896003BC891 /* SwiftyAWSTests.swift */; };
 		7C44AEF31FA4B896003BC891 /* SwiftyAWS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C44AEFD1FA4BBDD003BC891 /* SwiftyAWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44AEFC1FA4BBDD003BC891 /* SwiftyAWS.swift */; };
+		EA3F9EF1334CBF40AFAFF51B /* Pods_SwiftyAWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5EC4020B32D8C50A15A081 /* Pods_SwiftyAWS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +26,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AD9A356F183B3161209C3F1 /* Pods-SwiftyAWSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAWSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests.release.xcconfig"; sourceTree = "<group>"; };
+		30CEAD6CA94749CAF44D629A /* Pods-SwiftyAWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAWS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAWS/Pods-SwiftyAWS.debug.xcconfig"; sourceTree = "<group>"; };
 		7C44AEE21FA4B896003BC891 /* SwiftyAWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyAWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyAWS.h; sourceTree = "<group>"; };
 		7C44AEE61FA4B896003BC891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C44AEEB1FA4B896003BC891 /* SwiftyAWSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyAWSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C44AEF01FA4B896003BC891 /* SwiftyAWSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyAWSTests.swift; sourceTree = "<group>"; };
 		7C44AEF21FA4B896003BC891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C44AEFC1FA4BBDD003BC891 /* SwiftyAWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyAWS.swift; sourceTree = "<group>"; };
+		7E5EC3081BA913565194A1AC /* Pods-SwiftyAWSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAWSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		875FAF283437FBEE6F8FCB6E /* Pods_SwiftyAWSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyAWSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5EC4020B32D8C50A15A081 /* Pods_SwiftyAWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyAWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6937EA137BBD0709FAC2B9 /* Pods-SwiftyAWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAWS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAWS/Pods-SwiftyAWS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3F9EF1334CBF40AFAFF51B /* Pods_SwiftyAWS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,18 +55,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C44AEEC1FA4B896003BC891 /* SwiftyAWS.framework in Frameworks */,
+				5B2FEBB29954B1B472B5F8EE /* Pods_SwiftyAWSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B5EAC41D6085290FED61BBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30CEAD6CA94749CAF44D629A /* Pods-SwiftyAWS.debug.xcconfig */,
+				BB6937EA137BBD0709FAC2B9 /* Pods-SwiftyAWS.release.xcconfig */,
+				7E5EC3081BA913565194A1AC /* Pods-SwiftyAWSTests.debug.xcconfig */,
+				0AD9A356F183B3161209C3F1 /* Pods-SwiftyAWSTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7C44AED81FA4B895003BC891 = {
 			isa = PBXGroup;
 			children = (
 				7C44AEE41FA4B896003BC891 /* SwiftyAWS */,
 				7C44AEEF1FA4B896003BC891 /* SwiftyAWSTests */,
 				7C44AEE31FA4B896003BC891 /* Products */,
+				3B5EAC41D6085290FED61BBA /* Pods */,
+				D7EDFB93028BD1D387B10608 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */,
+				7C44AEFC1FA4BBDD003BC891 /* SwiftyAWS.swift */,
 				7C44AEE61FA4B896003BC891 /* Info.plist */,
 			);
 			path = SwiftyAWS;
@@ -84,6 +110,15 @@
 				7C44AEF21FA4B896003BC891 /* Info.plist */,
 			);
 			path = SwiftyAWSTests;
+			sourceTree = "<group>";
+		};
+		D7EDFB93028BD1D387B10608 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A5EC4020B32D8C50A15A081 /* Pods_SwiftyAWS.framework */,
+				875FAF283437FBEE6F8FCB6E /* Pods_SwiftyAWSTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,10 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C44AEF61FA4B896003BC891 /* Build configuration list for PBXNativeTarget "SwiftyAWS" */;
 			buildPhases = (
+				5BC5D057A8F1BF8E6DC2842E /* [CP] Check Pods Manifest.lock */,
 				7C44AEDD1FA4B896003BC891 /* Sources */,
 				7C44AEDE1FA4B896003BC891 /* Frameworks */,
 				7C44AEDF1FA4B896003BC891 /* Headers */,
 				7C44AEE01FA4B896003BC891 /* Resources */,
+				63053D37B4E0FCD96EBD60C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -122,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C44AEF91FA4B896003BC891 /* Build configuration list for PBXNativeTarget "SwiftyAWSTests" */;
 			buildPhases = (
+				42F7D6AC5E25847739890E0F /* [CP] Check Pods Manifest.lock */,
 				7C44AEE71FA4B896003BC891 /* Sources */,
 				7C44AEE81FA4B896003BC891 /* Frameworks */,
 				7C44AEE91FA4B896003BC891 /* Resources */,
+				2D52B8137C77CDE48BA04B9F /* [CP] Embed Pods Frameworks */,
+				014DACDFED14F01D2709E3DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,6 +188,7 @@
 				TargetAttributes = {
 					7C44AEE11FA4B896003BC891 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					7C44AEEA1FA4B896003BC891 = {
@@ -191,11 +232,103 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		014DACDFED14F01D2709E3DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D52B8137C77CDE48BA04B9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42F7D6AC5E25847739890E0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftyAWSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BC5D057A8F1BF8E6DC2842E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftyAWS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63053D37B4E0FCD96EBD60C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAWS/Pods-SwiftyAWS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7C44AEDD1FA4B896003BC891 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C44AEFD1FA4BBDD003BC891 /* SwiftyAWS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +466,9 @@
 		};
 		7C44AEF71FA4B896003BC891 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30CEAD6CA94749CAF44D629A /* Pods-SwiftyAWS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +482,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Andres.SwiftyAWS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,7 +490,9 @@
 		};
 		7C44AEF81FA4B896003BC891 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB6937EA137BBD0709FAC2B9 /* Pods-SwiftyAWS.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -375,7 +513,9 @@
 		};
 		7C44AEFA1FA4B896003BC891 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E5EC3081BA913565194A1AC /* Pods-SwiftyAWSTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NT8XEMLY2Z;
 				INFOPLIST_FILE = SwiftyAWSTests/Info.plist;
@@ -389,7 +529,9 @@
 		};
 		7C44AEFB1FA4B896003BC891 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AD9A356F183B3161209C3F1 /* Pods-SwiftyAWSTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NT8XEMLY2Z;
 				INFOPLIST_FILE = SwiftyAWSTests/Info.plist;
