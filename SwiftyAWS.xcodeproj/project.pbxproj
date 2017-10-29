@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B2FEBB29954B1B472B5F8EE /* Pods_SwiftyAWSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875FAF283437FBEE6F8FCB6E /* Pods_SwiftyAWSTests.framework */; };
+		7C0F796C1FA5639400232E56 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F796B1FA5639400232E56 /* Video.swift */; };
+		7C0F796E1FA564AF00232E56 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F796D1FA564AF00232E56 /* GeneralExtensions.swift */; };
+		7C0F79701FA5651E00232E56 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F796F1FA5651E00232E56 /* Image.swift */; };
 		7C44AEEC1FA4B896003BC891 /* SwiftyAWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AEE21FA4B896003BC891 /* SwiftyAWS.framework */; };
 		7C44AEF11FA4B896003BC891 /* SwiftyAWSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44AEF01FA4B896003BC891 /* SwiftyAWSTests.swift */; };
 		7C44AEF31FA4B896003BC891 /* SwiftyAWS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		0AD9A356F183B3161209C3F1 /* Pods-SwiftyAWSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAWSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests.release.xcconfig"; sourceTree = "<group>"; };
 		30CEAD6CA94749CAF44D629A /* Pods-SwiftyAWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyAWS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyAWS/Pods-SwiftyAWS.debug.xcconfig"; sourceTree = "<group>"; };
+		7C0F796B1FA5639400232E56 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		7C0F796D1FA564AF00232E56 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
+		7C0F796F1FA5651E00232E56 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		7C44AEE21FA4B896003BC891 /* SwiftyAWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyAWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyAWS.h; sourceTree = "<group>"; };
 		7C44AEE61FA4B896003BC891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +104,9 @@
 			children = (
 				7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */,
 				7C44AEFC1FA4BBDD003BC891 /* SwiftyAWS.swift */,
+				7C0F796F1FA5651E00232E56 /* Image.swift */,
+				7C0F796B1FA5639400232E56 /* Video.swift */,
+				7C0F796D1FA564AF00232E56 /* GeneralExtensions.swift */,
 				7C44AEE61FA4B896003BC891 /* Info.plist */,
 			);
 			path = SwiftyAWS;
@@ -331,6 +340,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C44AEFD1FA4BBDD003BC891 /* SwiftyAWS.swift in Sources */,
+				7C0F79701FA5651E00232E56 /* Image.swift in Sources */,
+				7C0F796E1FA564AF00232E56 /* GeneralExtensions.swift in Sources */,
+				7C0F796C1FA5639400232E56 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
