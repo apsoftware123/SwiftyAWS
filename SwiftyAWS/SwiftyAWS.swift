@@ -22,12 +22,20 @@ public enum FileNamingConvetion {
     case custom(String)
 }
 
+struct ErrorHandlingMessages {
+    static var errorUploading = "-- We weren't able to upload the file to S3 bucket."
+    static var errorNaming = "-- Encountered error with the naming convensation."
+    static var errorCreatingTempDir = "-- Error creating temporary directory."
+    static var errorWritingToFile = "-- Writing to file failed."
+    static var improperUse = "-- Bucket name cannot be nil when uploading file."
+}
+
 public enum ErrorHandling: Error {
-    case errorUploading
-    case errorNaming
-    case errorCreatingTempDir
-    case errorWritingToFile
-    case improperUse
+    case errorUploading(String)
+    case errorNaming(String)
+    case errorCreatingTempDir(String)
+    case errorWritingToFile(String)
+    case improperUse(String)
 }
 
 public class SwiftyAWS {
