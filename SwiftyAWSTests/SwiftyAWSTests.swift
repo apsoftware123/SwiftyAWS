@@ -22,20 +22,31 @@ class SwiftyAWSTests: XCTestCase {
     }
     
     func testUploadUsingSingleton() {
+        
+        let expected = expectation(description: "upload(image:type:name:permission:completionHandler:) should upload to S3")
 
         SwiftyAWS.main.bucketName = "crash-chat"
         SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
-        print("image: \(image)")
         
         SwiftyAWS.main.upload(image: image, type: .png, name: .effient, permission: .publicReadWrite) { (path, error) in
+           
             if error != nil {
                 print(error!)
                 XCTAssertTrue(false, "Failed to upload")
             }
+            
             XCTAssertTrue(true, path!)
+            expected.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { (error) in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            XCTAssert(true, "Successfully uploaded to AWS")
         }
     }
     
