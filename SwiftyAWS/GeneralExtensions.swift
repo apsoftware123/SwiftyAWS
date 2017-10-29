@@ -22,19 +22,6 @@ extension UIImage {
         return SwiftyAWS.main
     }
     
-    var temporaryDirectoryPath: URL? {
-        return URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("upload")
-    }
-    
-    func createTemporaryDirectory() {
-        do {
-            let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("upload")
-            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            print("Creating 'upload' directory failed. Error: \(error)")
-        }
-    }
-    
     public func imageRepresentation(fileType: ImageType) -> Data? {
         switch fileType {
         case .png:

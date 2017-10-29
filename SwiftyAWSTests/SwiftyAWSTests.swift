@@ -21,9 +21,22 @@ class SwiftyAWSTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testUploadUsingSingleton() {
+
+        SwiftyAWS.main.bucketName = "crash-chat"
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        
+        let bundle = Bundle.init(for: SwiftyAWSTests.self)
+        let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
+        print("image: \(image)")
+        
+        SwiftyAWS.main.upload(image: image, type: .png, name: .effient, permission: .publicReadWrite) { (path, error) in
+            if error != nil {
+                print(error!)
+                XCTAssertTrue(false, "Failed to upload")
+            }
+            XCTAssertTrue(true, path!)
+        }
     }
     
     func testPerformanceExample() {

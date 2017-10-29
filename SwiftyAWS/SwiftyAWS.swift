@@ -30,22 +30,25 @@ public enum ErrorHandling: Error {
     case improperUse
 }
 
-open class SwiftyAWS {
-    
+public class SwiftyAWS {
     
     public typealias PermissionType = AWSS3ObjectCannedACL
     public typealias FileExtension = FileNamingConvetion
     public typealias ImageUploadHandler = UIImage.UploadToS3CompletionHanndler
     
-    open var bucketName: String?
+    public var bucketName: String?
     
     var directImage: UIImage?
     
-    open var endpointURL: URL = AWSS3.default().configuration.endpoint.url
+    open var endpointURL: URL?
     
-    open static var main = SwiftyAWS()
+    var temporaryDirectoryPath: URL? {
+        return URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("upload")
+    }
+    
+    public static var main = SwiftyAWS()
 
-    open func configure(type: AWSRegionType, identity: String)  {
+    public func configure(type: AWSRegionType, identity: String)  {
         
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: type,
                                                                 identityPoolId: identity)
@@ -53,5 +56,18 @@ open class SwiftyAWS {
         let configuration = AWSServiceConfiguration(region: type, credentialsProvider:credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        endpointURL = AWSS3.default().configuration.endpoint.url
+
+        createTemporaryDirectory()
+    }
+
+    func createTemporaryDirectory() {
+        do {
+            let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("upload")
+            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Creating 'upload' directory failed. Error: \(error)")
+        }
     }
 }

@@ -39,7 +39,8 @@ extension SwiftyAWS {
             return
         }
         
-        guard let fileURL = imageToUse.temporaryDirectoryPath?.appendingPathComponent(fileName) else {
+        print("File Name: \(fileName)")
+        guard let fileURL = temporaryDirectoryPath?.appendingPathComponent(fileName) else {
             completionHandler(nil, .errorCreatingTempDir)
             return
         }
@@ -53,8 +54,8 @@ extension SwiftyAWS {
         upload(withKey: fileName, body: fileURL, acl: permission, completionHandler: completionHandler)
     }
     
-    func upload(withKey key: String, body: URL, acl: PermissionType,completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
-        
+    func upload(withKey key: String, body: URL, acl: PermissionType, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
+        print(#function)
         guard let request = AWSS3TransferManagerUploadRequest() else { return }
         guard let bucket = bucketName else { completionHandler(nil, .improperUse); return }
         request.bucket = bucket
@@ -63,7 +64,8 @@ extension SwiftyAWS {
         request.acl = acl
         
         let transferManager = AWSS3TransferManager.default()
-        transferManager.upload(request).continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
+        let uploadRequest = transferManager.upload(request)
+        uploadRequest.continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
             if let _ = task.error {
                 completionHandler(nil, .errorUploading)
                 self.directImage = nil
@@ -71,7 +73,8 @@ extension SwiftyAWS {
             }
             
             if task.result != nil {
-                let pathURL = self.endpointURL.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
+                guard let url = self.endpointURL else { return nil }
+                let pathURL = url.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
                 completionHandler(pathURL, nil)
                 self.directImage = nil
                 return nil
