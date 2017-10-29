@@ -39,7 +39,6 @@ extension SwiftyAWS {
             return
         }
         
-        print("File Name: \(fileName)")
         guard let fileURL = temporaryDirectoryPath?.appendingPathComponent(fileName) else {
             completionHandler(nil, .errorCreatingTempDir)
             return
@@ -55,7 +54,6 @@ extension SwiftyAWS {
     }
     
     func upload(withKey key: String, body: URL, acl: PermissionType, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
-        print(#function)
         guard let request = AWSS3TransferManagerUploadRequest() else { return }
         guard let bucket = bucketName else { completionHandler(nil, .improperUse); return }
         request.bucket = bucket
