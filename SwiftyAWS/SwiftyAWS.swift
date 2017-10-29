@@ -32,6 +32,8 @@ public enum ErrorHandling: Error {
 
 open class SwiftyAWS {
     
+    
+    public typealias PermissionType = AWSS3ObjectCannedACL
     public typealias FileExtension = FileNamingConvetion
     public typealias ImageUploadHandler = UIImage.UploadToS3CompletionHanndler
     

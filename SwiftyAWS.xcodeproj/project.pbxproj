@@ -11,6 +11,7 @@
 		7C0F796C1FA5639400232E56 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F796B1FA5639400232E56 /* Video.swift */; };
 		7C0F796E1FA564AF00232E56 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F796D1FA564AF00232E56 /* GeneralExtensions.swift */; };
 		7C0F79701FA5651E00232E56 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F796F1FA5651E00232E56 /* Image.swift */; };
+		7C0F79721FA5694D00232E56 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F79711FA5694D00232E56 /* Other.swift */; };
 		7C44AEEC1FA4B896003BC891 /* SwiftyAWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44AEE21FA4B896003BC891 /* SwiftyAWS.framework */; };
 		7C44AEF11FA4B896003BC891 /* SwiftyAWSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C44AEF01FA4B896003BC891 /* SwiftyAWSTests.swift */; };
 		7C44AEF31FA4B896003BC891 /* SwiftyAWS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +35,7 @@
 		7C0F796B1FA5639400232E56 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		7C0F796D1FA564AF00232E56 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
 		7C0F796F1FA5651E00232E56 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		7C0F79711FA5694D00232E56 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		7C44AEE21FA4B896003BC891 /* SwiftyAWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyAWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C44AEE51FA4B896003BC891 /* SwiftyAWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyAWS.h; sourceTree = "<group>"; };
 		7C44AEE61FA4B896003BC891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				7C44AEFC1FA4BBDD003BC891 /* SwiftyAWS.swift */,
 				7C0F796F1FA5651E00232E56 /* Image.swift */,
 				7C0F796B1FA5639400232E56 /* Video.swift */,
+				7C0F79711FA5694D00232E56 /* Other.swift */,
 				7C0F796D1FA564AF00232E56 /* GeneralExtensions.swift */,
 				7C44AEE61FA4B896003BC891 /* Info.plist */,
 			);
@@ -342,6 +345,7 @@
 				7C44AEFD1FA4BBDD003BC891 /* SwiftyAWS.swift in Sources */,
 				7C0F79701FA5651E00232E56 /* Image.swift in Sources */,
 				7C0F796E1FA564AF00232E56 /* GeneralExtensions.swift in Sources */,
+				7C0F79721FA5694D00232E56 /* Other.swift in Sources */,
 				7C0F796C1FA5639400232E56 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

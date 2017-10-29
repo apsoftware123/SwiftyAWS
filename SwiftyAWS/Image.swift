@@ -28,6 +28,7 @@ extension SwiftyAWS {
     open func upload(image: UIImage? = nil,
                      type: ImageType,
                      name: FileExtension,
+                     permission: PermissionType,
                      completionHandler: @escaping ImageUploadHandler) {
         
         guard let imageToUse = imageToUse(image) else { return }
@@ -49,17 +50,17 @@ extension SwiftyAWS {
             return
         }
         
-        upload(withKey: fileName, body: fileURL, completionHandler: completionHandler)
+        upload(withKey: fileName, body: fileURL, acl: permission, completionHandler: completionHandler)
     }
     
-    func upload(withKey key: String, body: URL, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
+    func upload(withKey key: String, body: URL, acl: PermissionType,completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
         
         guard let request = AWSS3TransferManagerUploadRequest() else { return }
         guard let bucket = bucketName else { completionHandler(nil, .improperUse); return }
         request.bucket = bucket
         request.key = key
         request.body = body
-        request.acl = .publicReadWrite
+        request.acl = acl
         
         let transferManager = AWSS3TransferManager.default()
         transferManager.upload(request).continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
@@ -79,5 +80,4 @@ extension SwiftyAWS {
             return nil
         }
     }
-
 }
