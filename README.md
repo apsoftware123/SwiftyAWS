@@ -12,29 +12,43 @@ A swifty wrapper around the AWS S3 framework that will make storing files (image
 
 Download to your project directory, add `README.md`, and commit:
 
-```sh
-curl -LO http://git.io/Xy0Chg
-git add README.md
-git commit -m "Use README Boilerplate"
+```
+pod 'SwiftyAWS', :git => 'https://github.com/apeguero24/SwiftyAWS.git'
 ```
 
 ## Usage
 
-Replace the contents of `README.md` with your project's:
 
-- Name
-- Description
-- Installation instructions
-- Usage instructions
-- Support instructions
-- Contributing instructions
 
-Feel free to remove any sections that aren't applicable to your project.
+SwiftyAWS is a simple to use wrapper library around the iOS native AWS SDK. One of the main issues found when using the AWS SDK out of the box is the obvious divergence from modern swift best practices and conventions. 
+
+***Singleton Usage:***
+
+```
+SwiftyAWS.main.upload(image: image, type: .png, name: .effient, permission: .publicReadWrite) { (path, error) in
+    if error != nil {
+        print(error!)
+        return
+    }
+}
+```
+***UIImage Extension Usage:***
+
+```
+let image = UIImage(named: "lion.jpg")
+image?.s3.upload(type: .png, name: .effient, permission: .publicReadWrite, completionHandler: { (path, error) in
+    if error != nil {
+        print(error!)
+        return
+    }
+})
+```
+
 
 ## Support
 
-Please [open an issue](https://github.com/fraction/readme-boilerplate/issues/new) for support.
+Please [open an issue](https://github.com/apeguero24/SwiftyAWS/issues/new) for support.
 
 ## Contributing
 
-Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/apeguero24/SwiftyAWS/compare/).
