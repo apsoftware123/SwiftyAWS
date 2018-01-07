@@ -33,7 +33,7 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should upload to S3")
 
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
