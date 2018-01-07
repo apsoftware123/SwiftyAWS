@@ -10,15 +10,13 @@ A swifty wrapper around the AWS S3 framework that will make storing files (image
 
 ## Installation
 
-Download to your project directory, add `README.md`, and commit:
+Using Cocoapods:
 
 ```
 pod 'SwiftyAWS', :git => 'https://github.com/apeguero24/SwiftyAWS.git'
 ```
 
 ## Usage
-
-
 
 SwiftyAWS is a simple to use wrapper library around the iOS native AWS SDK. One of the main issues found when using the AWS SDK out of the box is the obvious divergence from modern swift best practices and conventions. 
 
@@ -44,6 +42,13 @@ image?.s3.upload(type: .png, name: .effient, permission: .publicReadWrite, compl
 })
 ```
 
+***File Types:***
+At the moment SwiftyAWS only supports PNGs and JPEGs, adding more file formats in the near future (pull requests would be appreciated):
+```
+.png
+.jpeg
+
+```
 
 ## Support
 
