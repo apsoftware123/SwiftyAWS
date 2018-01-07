@@ -22,7 +22,7 @@ SwiftyAWS is a simple to use wrapper library around the iOS native AWS SDK. One 
 
 ***Singleton Usage:***
 
-```
+```swift
 SwiftyAWS.main.upload(image: image, type: .png, name: .effient, permission: .publicReadWrite) { (path, error) in
     if error != nil {
         print(error!)
@@ -32,7 +32,7 @@ SwiftyAWS.main.upload(image: image, type: .png, name: .effient, permission: .pub
 ```
 ***UIImage Extension Usage:***
 
-```
+```swift
 let image = UIImage(named: "lion.jpg")
 image?.s3.upload(type: .png, name: .effient, permission: .publicReadWrite, completionHandler: { (path, error) in
     if error != nil {
@@ -44,7 +44,7 @@ image?.s3.upload(type: .png, name: .effient, permission: .publicReadWrite, compl
 
 ***File Types:***
 At the moment SwiftyAWS only supports PNGs and JPEGs, adding more file formats in the near future (pull requests would be appreciated):
-```
+```swift
 .png
 .jpeg
 
