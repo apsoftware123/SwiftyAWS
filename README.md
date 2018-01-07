@@ -12,7 +12,7 @@ A swifty wrapper around the AWS S3 framework that will make storing files (image
 
 Using Cocoapods:
 
-```
+```ruby
 pod 'SwiftyAWS', :git => 'https://github.com/apeguero24/SwiftyAWS.git'
 ```
 
