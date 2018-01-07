@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "A wrapper library around AWS S3 to streamline the upload and download process. Makes AWS swiftier."
 
-  s.homepage     = "http://EXAMPLE/SwiftyAWS"
+  s.homepage     = "https://github.com/apeguero24/SwiftyAWS"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "." }
+  s.source       = { :git => "https://github.com/apeguero24/SwiftyAWS.git" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
