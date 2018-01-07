@@ -50,6 +50,13 @@ At the moment SwiftyAWS only supports PNGs and JPEGs, adding more file formats i
 
 ```
 
+***File Naming:***
+When using SwiftyAWS you can choose between `.custom(String)` and `.efficient` when naming your files. When using `.efficient` the name of the file becomes the `SHA256` of the base64 encoded data. What does that mean? It means that if a file has an identical hash, then it will be same file therefore it shouldn't be stored as a duplicate in your bucket. 
+```swift 
+.custom("lion") // ex: lion.png
+.efficient // ex: FC59487712BBE89B488847B77B5744FB6B815B8FC65EF2AB18149958EDB61464.png
+```
+
 ## Support
 
 Please [open an issue](https://github.com/apeguero24/SwiftyAWS/issues/new) for support.
