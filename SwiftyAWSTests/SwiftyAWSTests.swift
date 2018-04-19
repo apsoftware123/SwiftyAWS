@@ -38,7 +38,7 @@ class SwiftyAWSTests: XCTestCase {
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
         
-        SwiftyAWS.main.upload(image: image, type: .png, name: .effient, permission: .publicReadWrite) { (path, error) in
+        SwiftyAWS.main.upload(image: image, type: .png, name: .efficient, permission: .publicReadWrite) { (path, error) in
            
             if error != nil {
                 print(error!)

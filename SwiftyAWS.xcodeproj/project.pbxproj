@@ -159,7 +159,6 @@
 				7C44AEDE1FA4B896003BC891 /* Frameworks */,
 				7C44AEDF1FA4B896003BC891 /* Headers */,
 				7C44AEE01FA4B896003BC891 /* Resources */,
-				63053D37B4E0FCD96EBD60C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,7 +178,6 @@
 				7C44AEE81FA4B896003BC891 /* Frameworks */,
 				7C44AEE91FA4B896003BC891 /* Resources */,
 				2D52B8137C77CDE48BA04B9F /* [CP] Embed Pods Frameworks */,
-				014DACDFED14F01D2709E3DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,21 +247,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		014DACDFED14F01D2709E3DA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAWSTests/Pods-SwiftyAWSTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2D52B8137C77CDE48BA04B9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,21 +305,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63053D37B4E0FCD96EBD60C0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyAWS/Pods-SwiftyAWS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

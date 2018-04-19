@@ -26,7 +26,7 @@ public enum ImageType: String {
 }
 
 public enum FileNamingConvetion {
-    case effient
+    case efficient
     case custom(String)
 }
 
