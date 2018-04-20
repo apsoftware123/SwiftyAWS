@@ -57,7 +57,7 @@ SwiftyAWS.main.download(imageName: "d133eb68a94328d5f56febe461663b8b642970e5c38f
 }
 ```
 
-***UIImage Extension Usage:***
+***String Extension Usage:***
 
 ```swift
 "d133eb68a94328d5f56febe461663b8b642970e5c38fb71385fc88118ce3efd9".s3.download(imageExtension: .png) { (image, path, error) in
