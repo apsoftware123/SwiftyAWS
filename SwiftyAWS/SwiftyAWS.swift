@@ -26,7 +26,7 @@ public enum ImageType: String {
 }
 
 public enum FileNamingConvetion {
-    case effient
+    case efficient
     case custom(String)
 }
 
@@ -36,6 +36,7 @@ struct ErrorHandlingMessages {
     static var errorCreatingTempDir = "-- Error creating temporary directory."
     static var errorWritingToFile = "-- Writing to file failed."
     static var improperUse = "-- Bucket name cannot be nil when uploading file."
+    static var errorDownloading = "-- We weren't able to download the file from S3 bucket."
 }
 
 public enum ErrorHandling: Error {
@@ -44,6 +45,7 @@ public enum ErrorHandling: Error {
     case errorCreatingTempDir(String)
     case errorWritingToFile(String)
     case improperUse(String)
+    case errorDownloading(String)
 }
 
 public class SwiftyAWS {
@@ -51,10 +53,12 @@ public class SwiftyAWS {
     public typealias PermissionType = AWSS3ObjectCannedACL
     public typealias FileExtension = FileNamingConvetion
     public typealias ImageUploadHandler = UIImage.UploadToS3CompletionHanndler
+    public typealias ImageDownloadHandler = String.DownloadFromS3CompletionHanndler
     
     public var bucketName: String?
     
     var directImage: UIImage?
+    var directName: String?
     
     open var endpointURL: URL?
     

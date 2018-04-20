@@ -60,3 +60,14 @@ extension UIImage {
     }
     
 }
+
+extension String {
+    public typealias DownloadFromS3CompletionHanndler = (_ image: UIImage?, _ path: String?, _ error: ErrorHandling?) -> Void
+    public typealias ImageData = String
+    
+    public var s3: SwiftyAWS {
+        SwiftyAWS.main.directName = self
+        return SwiftyAWS.main
+    }
+
+}
