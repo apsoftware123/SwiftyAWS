@@ -67,8 +67,7 @@ class SwiftyAWSTests: XCTestCase {
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
         
-        SwiftyAWS.main.upload(image: image, type: .png, name: .efficient, permission: .publicReadWrite) { (path, error) in
-            
+        image?.s3.upload(type: .png, name: .efficient, permission: .publicReadWrite, completionHandler: { (path, error) in
             if error != nil {
                 print(error!)
                 XCTAssertTrue(false)
@@ -76,7 +75,7 @@ class SwiftyAWSTests: XCTestCase {
             
             XCTAssertTrue(true, path!)
             expected.fulfill()
-        }
+        })
         
         waitForExpectations(timeout: 45) { (error) in
             if let error = error {
