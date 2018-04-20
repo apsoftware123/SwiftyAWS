@@ -33,7 +33,7 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should upload to S3")
 
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
@@ -55,6 +55,89 @@ class SwiftyAWSTests: XCTestCase {
             }
             XCTAssert(true, "Successfully uploaded to AWS")
         }
+    }
+    
+    func testUploadUsingSelf() {
+        
+        let expected = expectation(description: "Should upload to S3")
+        
+        SwiftyAWS.main.bucketName = "crash-chat"
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        
+        let bundle = Bundle.init(for: SwiftyAWSTests.self)
+        let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
+        
+        SwiftyAWS.main.upload(image: image, type: .png, name: .efficient, permission: .publicReadWrite) { (path, error) in
+            
+            if error != nil {
+                print(error!)
+                XCTAssertTrue(false)
+            }
+            
+            XCTAssertTrue(true, path!)
+            expected.fulfill()
+        }
+        
+        waitForExpectations(timeout: 45) { (error) in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            XCTAssert(true, "Successfully uploaded to AWS")
+        }
+    }
+    
+    func testDownloadUsingSingleton() {
+        let expected = expectation(description: "Should download from S3")
+        
+        SwiftyAWS.main.bucketName = "crash-chat"
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        
+        let bundle = Bundle.init(for: SwiftyAWSTests.self)
+        
+        SwiftyAWS.main.download(imageName: "d133eb68a94328d5f56febe461663b8b642970e5c38fb71385fc88118ce3efd9", imageExtension: .png) { (image, path, error) in
+            if error != nil {
+                print(error!)
+                XCTAssertTrue(false)
+            }
+            
+            XCTAssertTrue(true, path!)
+            expected.fulfill()
+        }
+
+        waitForExpectations(timeout: 45) { (error) in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            XCTAssert(true, "Successfully downloaded from AWS")
+        }
+
+    }
+    
+    func testDownloadUsingSelf() {
+        let expected = expectation(description: "Should download from S3")
+        
+        SwiftyAWS.main.bucketName = "crash-chat"
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        
+        let bundle = Bundle.init(for: SwiftyAWSTests.self)
+        
+        "d133eb68a94328d5f56febe461663b8b642970e5c38fb71385fc88118ce3efd9".s3.download(imageExtension: .png) { (image, path, error) in
+            if error != nil {
+                print(error!)
+                XCTAssert(false)
+            }
+            
+            XCTAssertTrue(true, path!)
+            expected.fulfill()
+        }
+        
+        waitForExpectations(timeout: 45) { (error) in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+            XCTAssert(true, "Successfully downloaded from AWS")
+        }
+        
     }
     
     func testPerformanceExample() {

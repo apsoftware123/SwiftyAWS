@@ -32,6 +32,17 @@ extension SwiftyAWS {
         }
     }
     
+    private func nameToUse(_ imageName: String?) -> String? {
+        if directName != nil {
+            return directName!
+        } else if imageName != nil {
+            return imageName!
+        } else {
+            print("Improper use of the API: This method must contain a string reference")
+            return nil
+        }
+    }
+    
     open func upload(image: UIImage? = nil,
                      type: ImageType,
                      name: FileExtension,
@@ -50,7 +61,7 @@ extension SwiftyAWS {
             completionHandler(nil, .errorCreatingTempDir(ErrorHandlingMessages.errorCreatingTempDir))
             return
         }
-        
+
         let imageData = imageToUse.imageRepresentation(fileType: type)
         guard let _ = try? imageData?.write(to: fileURL, options: Data.WritingOptions.atomic) else {
             completionHandler(nil, .errorWritingToFile(ErrorHandlingMessages.errorWritingToFile))
@@ -87,5 +98,69 @@ extension SwiftyAWS {
             
             return nil
         }
+    }
+    
+    open func download(imageName: String? = nil,
+                       imageExtension: ImageType,
+                       completionHandler: @escaping ImageDownloadHandler) {
+        
+        guard let nameToUse = nameToUse(imageName) else { return  }
+        download(imageName: nameToUse, imageExtension: imageExtension, completionHandler: completionHandler)
+
+    }
+    
+    func download(imageName: String,
+                  imageExtension: ImageType,
+                  completionHandler: @escaping String.DownloadFromS3CompletionHanndler) {
+        
+        guard let request = AWSS3TransferManagerDownloadRequest() else { return }
+        guard let bucket = bucketName else { completionHandler(nil, nil, ErrorHandling.improperUse(ErrorHandlingMessages.improperUse)); return }
+        
+        let fileTypeExtension = imageExtension.rawValue
+        
+        let filename = imageName.appending(fileTypeExtension)
+        
+        
+        let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)
+        
+        
+        let transferManager = AWSS3TransferManager.default()
+        
+        
+        request.bucket = bucket
+        request.key = filename
+        request.downloadingFileURL = downloadingFileURL
+        
+        
+        transferManager.download(request).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+            
+            if let error = task.error as NSError? {
+                if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                    switch code {
+                    case .cancelled, .paused:
+                        break
+                    default:
+                        print("Error downloading1: \(request.key) Error: \(error)")
+                    }
+                } else {
+                    print("Error downloading: \(request.key) Error: \(error)")
+                }
+                
+                completionHandler(nil, nil, .errorDownloading(ErrorHandlingMessages.errorDownloading))
+                return nil
+            }
+            print("Download complete for: \(request.key)")
+            
+            if task.result != nil {
+                //Construct the image here
+                guard let image = UIImage(contentsOfFile: downloadingFileURL.path) else { return nil }
+                
+                completionHandler(image, downloadingFileURL.path, nil)
+                self.directName = nil
+                return nil
+            }
+            return nil
+        })
+        
     }
 }
