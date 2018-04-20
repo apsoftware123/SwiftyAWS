@@ -13,6 +13,10 @@
 // permissions and limitations under the License.
 //
 
+//
+// You can obtain a AWS identity by following this link https://console.aws.amazon.com/cognito/federated
+// Follow the tutorial in this path https://docs.aws.amazon.com/aws-mobile/latest/developerguide/how-to-integrate-an-existing-bucket.html
+// For an example on how to generate a cognito ID
 import XCTest
 @testable import SwiftyAWS
 
@@ -33,7 +37,7 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should upload to S3")
 
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
@@ -62,7 +66,7 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should upload to S3")
         
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
@@ -89,10 +93,11 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should download from S3")
         
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         
+        // Change imageName string to the image name that was uploaded to S3 when you ran the upload test
         SwiftyAWS.main.download(imageName: "d133eb68a94328d5f56febe461663b8b642970e5c38fb71385fc88118ce3efd9", imageExtension: .png) { (image, path, error) in
             if error != nil {
                 print(error!)
@@ -116,10 +121,11 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should download from S3")
         
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         
+        //Change this string to the image name that was uploaded to S3 when you ran the upload test
         "d133eb68a94328d5f56febe461663b8b642970e5c38fb71385fc88118ce3efd9".s3.download(imageExtension: .png) { (image, path, error) in
             if error != nil {
                 print(error!)
