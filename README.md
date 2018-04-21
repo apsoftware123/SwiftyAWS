@@ -20,6 +20,12 @@ pod 'SwiftyAWS', :git => 'https://github.com/apeguero24/SwiftyAWS.git'
 
 SwiftyAWS is a simple to use wrapper library around the iOS native AWS SDK. One of the main issues found when using the AWS SDK out of the box is the obvious divergence from modern swift best practices and conventions.
 
+```swift 
+ SwiftyAWS.main.bucketName = "BUCKET_NAME"
+ SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
+
+```
+
 ### Upload
 
 ***Singleton Usage:***
