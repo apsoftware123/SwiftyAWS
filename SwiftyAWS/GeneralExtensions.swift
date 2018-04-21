@@ -21,7 +21,7 @@ import CryptoSwift
 
 extension UIImage {
     
-    public typealias UploadToS3CompletionHanndler = (_ path: ImagePath?, _ error: ErrorHandling?) -> Void
+    public typealias UploadToS3CompletionHanndler = (_ path: ImagePath?, _ key:String?, _ error: ErrorHandling?) -> Void
     public typealias ImagePath = String
     
     open var s3: SwiftyAWS {
