@@ -81,7 +81,7 @@ extension SwiftyAWS {
         
         let transferManager = AWSS3TransferManager.default()
         let uploadRequest = transferManager.upload(request)
-        uploadRequest.continueWith { (task) -> Any? in
+        uploadRequest.continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
             if let _ = task.error {
                 completionHandler(nil, nil, .errorUploading(ErrorHandlingMessages.errorUploading))
                 self.directImage = nil
