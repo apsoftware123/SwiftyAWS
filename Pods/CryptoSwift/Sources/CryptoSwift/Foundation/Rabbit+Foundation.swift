@@ -19,10 +19,19 @@ import Foundation
 extension Rabbit {
 
     public convenience init(key: String) throws {
-        try self.init(key: key.bytes)
+        guard let kkey = key.data(using: String.Encoding.utf8, allowLossyConversion: false)?.bytes else {
+            throw Error.invalidKeyOrInitializationVector
+        }
+        try self.init(key: kkey)
     }
 
     public convenience init(key: String, iv: String) throws {
-        try self.init(key: key.bytes, iv: iv.bytes)
+        guard let kkey = key.data(using: String.Encoding.utf8, allowLossyConversion: false)?.bytes,
+            let iiv = iv.data(using: String.Encoding.utf8, allowLossyConversion: false)?.bytes
+        else {
+            throw Error.invalidKeyOrInitializationVector
+        }
+
+        try self.init(key: kkey, iv: iiv)
     }
 }

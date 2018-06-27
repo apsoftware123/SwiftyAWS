@@ -18,11 +18,13 @@
 //
 
 struct CTRModeWorker: RandomAccessBlockModeWorker {
+    typealias Element = Array<UInt8>
+
     let cipherOperation: CipherOperationOnBlock
-    private let iv: ArraySlice<UInt8>
+    private let iv: Element
     var counter: UInt = 0
 
-    init(iv: ArraySlice<UInt8>, cipherOperation: @escaping CipherOperationOnBlock) {
+    init(iv: Array<UInt8>, cipherOperation: @escaping CipherOperationOnBlock) {
         self.iv = iv
         self.cipherOperation = cipherOperation
     }
@@ -31,7 +33,7 @@ struct CTRModeWorker: RandomAccessBlockModeWorker {
         let nonce = buildNonce(iv, counter: UInt64(counter))
         counter = counter + 1
 
-        guard let ciphertext = cipherOperation(nonce.slice) else {
+        guard let ciphertext = cipherOperation(nonce) else {
             return Array(plaintext)
         }
 
@@ -43,10 +45,10 @@ struct CTRModeWorker: RandomAccessBlockModeWorker {
     }
 }
 
-private func buildNonce(_ iv: ArraySlice<UInt8>, counter: UInt64) -> Array<UInt8> {
+private func buildNonce(_ iv: Array<UInt8>, counter: UInt64) -> Array<UInt8> {
     let noncePartLen = AES.blockSize / 2
-    let noncePrefix = Array(iv[iv.startIndex..<iv.startIndex.advanced(by: noncePartLen)])
-    let nonceSuffix = Array(iv[iv.startIndex.advanced(by: noncePartLen)..<iv.startIndex.advanced(by: iv.count)])
+    let noncePrefix = Array(iv[0..<noncePartLen])
+    let nonceSuffix = Array(iv[noncePartLen..<iv.count])
     let c = UInt64(bytes: nonceSuffix) + counter
     return noncePrefix + c.bytes()
 }

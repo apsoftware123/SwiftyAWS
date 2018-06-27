@@ -14,6 +14,8 @@
 //  - This notice may not be removed or altered from any source or binary distribution.
 //
 
+private typealias Key = SecureBytes
+
 public final class Rabbit: BlockCipher {
 
     public enum Error: Swift.Error {

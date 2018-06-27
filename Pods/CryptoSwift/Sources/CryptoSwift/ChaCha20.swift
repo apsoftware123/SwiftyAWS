@@ -17,6 +17,8 @@
 //  https://tools.ietf.org/html/rfc7539
 //
 
+private typealias Key = SecureBytes
+
 public final class ChaCha20: BlockCipher {
 
     public enum Error: Swift.Error {
