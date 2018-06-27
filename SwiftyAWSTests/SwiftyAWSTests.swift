@@ -36,8 +36,8 @@ class SwiftyAWSTests: XCTestCase {
         
         let expected = expectation(description: "Should upload to S3")
 
-        SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
+        SwiftyAWS.main.bucketName = "crash_profile_pictures"
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:b5e941a4-9b62-4457-a4db-8cd199514bc9")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
@@ -66,7 +66,7 @@ class SwiftyAWSTests: XCTestCase {
         let expected = expectation(description: "Should upload to S3")
         
         SwiftyAWS.main.bucketName = "crash-chat"
-        SwiftyAWS.main.configure(type: .USEast1, identity: "xxxxx-xxxx--xxxxx-xxxx-xxxxx-xxxxx")
+        SwiftyAWS.main.configure(type: .USEast1, identity: "us-east-1:6a386b3c-11f5-4fba-b427-2cf6b9a00cf1")
         
         let bundle = Bundle.init(for: SwiftyAWSTests.self)
         let image = UIImage(named: "cheetah.jpg", in: bundle, compatibleWith: nil)
