@@ -68,7 +68,9 @@ extension SwiftyAWS {
             return
         }
         
-        upload(withKey: fileName, body: fileURL, acl: permission, completionHandler: completionHandler)
+        DispatchQueue.global(qos: .background).async {
+            self.upload(withKey: fileName, body: fileURL, acl: permission, completionHandler: completionHandler)
+        }
     }
     
     func upload(withKey key: String, body: URL, acl: PermissionType, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
