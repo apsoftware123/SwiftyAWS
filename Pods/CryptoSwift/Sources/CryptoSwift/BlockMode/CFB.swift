@@ -18,11 +18,13 @@
 //
 
 struct CFBModeWorker: BlockModeWorker {
-    let cipherOperation: CipherOperationOnBlock
-    private let iv: ArraySlice<UInt8>
-    private var prev: ArraySlice<UInt8>?
+    typealias Element = Array<UInt8>
 
-    init(iv: ArraySlice<UInt8>, cipherOperation: @escaping CipherOperationOnBlock) {
+    let cipherOperation: CipherOperationOnBlock
+    private let iv: Element
+    private var prev: Element?
+
+    init(iv: Array<UInt8>, cipherOperation: @escaping CipherOperationOnBlock) {
         self.iv = iv
         self.cipherOperation = cipherOperation
     }
@@ -31,16 +33,16 @@ struct CFBModeWorker: BlockModeWorker {
         guard let ciphertext = cipherOperation(prev ?? iv) else {
             return Array(plaintext)
         }
-        prev = xor(plaintext, ciphertext.slice)
-        return Array(prev ?? [])
+        prev = xor(plaintext, ciphertext)
+        return prev ?? []
     }
 
     mutating func decrypt(_ ciphertext: ArraySlice<UInt8>) -> Array<UInt8> {
         guard let plaintext = cipherOperation(prev ?? iv) else {
             return Array(ciphertext)
         }
-        let result: Array<UInt8> = xor(plaintext, ciphertext)
-        prev = ciphertext
+        let result = xor(plaintext, ciphertext)
+        prev = Array(ciphertext)
         return result
     }
 }
