@@ -68,37 +68,35 @@ extension SwiftyAWS {
             return
         }
         
-        self.upload(withKey: fileName, body: fileURL, acl: permission, completionHandler: completionHandler)
+        upload(withKey: fileName, body: fileURL, acl: permission, completionHandler: completionHandler)
     }
     
     func upload(withKey key: String, body: URL, acl: PermissionType, completionHandler: @escaping UIImage.UploadToS3CompletionHanndler)  {
-        DispatchQueue.global(qos: .background).async {
-            guard let request = AWSS3TransferManagerUploadRequest() else { return }
-            guard let bucket = self.bucketName else { completionHandler(nil, nil, .improperUse(ErrorHandlingMessages.improperUse)); return }
-            request.bucket = bucket
-            request.key = key
-            request.body = body
-            request.acl = acl
-            
-            let transferManager = AWSS3TransferManager.default()
-            let uploadRequest = transferManager.upload(request)
-            uploadRequest.continueWith { (task) -> Any? in
-                if let _ = task.error {
-                    completionHandler(nil, nil, .errorUploading(ErrorHandlingMessages.errorUploading))
-                    self.directImage = nil
-                    return nil
-                }
-                
-                if task.result != nil {
-                    guard let url = self.endpointURL else { return nil }
-                    let pathURL = url.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
-                    completionHandler(pathURL, key, nil)
-                    self.directImage = nil
-                    return nil
-                }
-                
+        guard let request = AWSS3TransferManagerUploadRequest() else { return }
+        guard let bucket = bucketName else { completionHandler(nil, nil, .improperUse(ErrorHandlingMessages.improperUse)); return }
+        request.bucket = bucket
+        request.key = key
+        request.body = body
+        request.acl = acl
+        
+        let transferManager = AWSS3TransferManager.default()
+        let uploadRequest = transferManager.upload(request)
+        uploadRequest.continueWith { (task) -> Any? in
+            if let _ = task.error {
+                completionHandler(nil, nil, .errorUploading(ErrorHandlingMessages.errorUploading))
+                self.directImage = nil
                 return nil
             }
+            
+            if task.result != nil {
+                guard let url = self.endpointURL else { return nil }
+                let pathURL = url.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
+                completionHandler(pathURL, key, nil)
+                self.directImage = nil
+                return nil
+            }
+            
+            return nil
         }
     }
     
