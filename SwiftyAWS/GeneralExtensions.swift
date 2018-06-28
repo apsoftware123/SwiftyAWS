@@ -17,8 +17,6 @@ import Foundation
 import AWSCognito
 import AWSS3
 import UIKit
-//import CommonCrypto
-import CryptoSwift
 
 
 extension UIImage {
@@ -72,20 +70,20 @@ extension String {
         return SwiftyAWS.main
     }
     
-    func MD5() -> String {
-        let messageData = self.data(using:.utf8)!
-        var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
-
-        _ = digestData.withUnsafeMutableBytes {digestBytes in
-            messageData.withUnsafeBytes {messageBytes in
-                CC_MD5(messageBytes, CC_LONG(messageData.count), digestBytes)
-            }
-        }
-        
-        let md5Hex = digestData.map { String(format: "%02hhx", $0) }.joined()
-
-        return md5Hex
-    }
+//    func MD5() -> String {
+//        let messageData = self.data(using:.utf8)!
+//        var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
+//
+//        _ = digestData.withUnsafeMutableBytes {digestBytes in
+//            messageData.withUnsafeBytes {messageBytes in
+//                CC_MD5(messageBytes, CC_LONG(messageData.count), digestBytes)
+//            }
+//        }
+//        
+//        let md5Hex = digestData.map { String(format: "%02hhx", $0) }.joined()
+//
+//        return md5Hex
+//    }
     
 //    func sha256(data: Data) -> Data {
 //        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))

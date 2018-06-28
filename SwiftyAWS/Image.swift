@@ -17,6 +17,7 @@ import Foundation
 import AWSCognito
 import AWSS3
 import UIKit
+import CryptoSwift
 
 extension SwiftyAWS {
     
@@ -51,7 +52,7 @@ extension SwiftyAWS {
         guard let imageToUse = imageToUse(image) else { return }
         
         let fileTypeExtension = type.rawValue
-        guard let fileName = imageToUse.convertToBase64(fileType: type)?.MD5().appending(fileTypeExtension) else {
+        guard let fileName = imageToUse.convertToBase64(fileType: type)?.md5().appending(fileTypeExtension) else {
             completionHandler(nil, nil, .errorNaming(ErrorHandlingMessages.errorNaming))
             return
         }
