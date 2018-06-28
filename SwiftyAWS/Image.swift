@@ -80,42 +80,24 @@ extension SwiftyAWS {
         request.acl = acl
         
         let transferManager = AWSS3TransferManager.default()
-        DispatchQueue.global(qos: .background).async {
-            transferManager.upload(request).continueWith { (task) -> Any? in
-                if let _ = task.error {
-                    completionHandler(nil, nil, .errorUploading(ErrorHandlingMessages.errorUploading))
-                    self.directImage = nil
-                    return nil
-                }
-                
-                if task.result != nil {
-                    guard let url = self.endpointURL else { return nil }
-                    let pathURL = url.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
-                    completionHandler(pathURL, key, nil)
-                    self.directImage = nil
-                    return nil
-                }
-                
+        let uploadRequest = transferManager.upload(request)
+        uploadRequest.continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
+            if let _ = task.error {
+                completionHandler(nil, nil, .errorUploading(ErrorHandlingMessages.errorUploading))
+                self.directImage = nil
                 return nil
             }
+            
+            if task.result != nil {
+                guard let url = self.endpointURL else { return nil }
+                let pathURL = url.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
+                completionHandler(pathURL, key, nil)
+                self.directImage = nil
+                return nil
+            }
+            
+            return nil
         }
-//        uploadRequest.continueWith(executor: AWSExecutor.mainThread()) { (task) -> Any? in
-//            if let _ = task.error {
-//                completionHandler(nil, nil, .errorUploading(ErrorHandlingMessages.errorUploading))
-//                self.directImage = nil
-//                return nil
-//            }
-//
-//            if task.result != nil {
-//                guard let url = self.endpointURL else { return nil }
-//                let pathURL = url.appendingPathComponent(bucket).appendingPathComponent(key).absoluteString
-//                completionHandler(pathURL, key, nil)
-//                self.directImage = nil
-//                return nil
-//            }
-//
-//            return nil
-//        }
     }
     
     open func download(imageName: String? = nil,
