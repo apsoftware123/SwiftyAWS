@@ -17,7 +17,8 @@ import Foundation
 import AWSCognito
 import AWSS3
 import UIKit
-import CryptoSwift
+import CommonCrypto
+
 
 extension UIImage {
     
@@ -69,5 +70,55 @@ extension String {
         SwiftyAWS.main.directName = self
         return SwiftyAWS.main
     }
+    
+    func MD5() -> String {
+        let messageData = self.data(using:.utf8)!
+        var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
 
+        _ = digestData.withUnsafeMutableBytes {digestBytes in
+            messageData.withUnsafeBytes {messageBytes in
+                CC_MD5(messageBytes, CC_LONG(messageData.count), digestBytes)
+            }
+        }
+        
+        let md5Hex = digestData.map { String(format: "%02hhx", $0) }.joined()
+
+        return md5Hex
+    }
+    
+//    func sha256(data: Data) -> Data {
+//        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+//        data.withUnsafeBytes {
+//            _ = CC_SHA256($0, CC_LONG(data.count), &hash)
+//        }
+//        return Data(bytes: hash)
+//    }
+    
+    // MARK: - SHA256
+//    func sha256() -> String {
+//        guard let data = self.data(using: .utf8) else {
+//            print("Data not available")
+//            return ""
+//        }
+//        return getHexString(fromData: digest(input: data as NSData))
+//    }
+//    
+//    private func digest(input : NSData) -> NSData {
+//        
+//        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
+//        var hashValue = [UInt8](repeating: 0, count: digestLength)
+//        CC_SHA256(input.bytes, UInt32(input.length), &hashValue)
+//        return NSData(bytes: hashValue, length: digestLength)
+//    }
+//    
+//    private  func getHexString(fromData data: NSData) -> String {
+//        var bytes = [UInt8](repeating: 0, count: data.length)
+//        data.getBytes(&bytes, length: data.length)
+//        
+//        var hexString = ""
+//        for byte in bytes {
+//            hexString += String(format:"%02x", UInt8(byte))
+//        }
+//        return hexString
+//    }
 }

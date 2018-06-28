@@ -1,0 +1,5 @@
+module CommonCrypto [system] {
+  header "./library/CommonCrypto.h"
+  header "./library/CommonRandom.h"
+  export *
+}
