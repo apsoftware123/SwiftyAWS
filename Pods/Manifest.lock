@@ -4,27 +4,37 @@ PODS:
   - AWSCore (2.6.4)
   - AWSS3 (2.6.4):
     - AWSCore (= 2.6.4)
+<<<<<<< HEAD
+=======
   - CryptoSwift (0.7.2)
+>>>>>>> master
 
 DEPENDENCIES:
   - AWSCognito
   - AWSCore
   - AWSS3
+<<<<<<< HEAD
+=======
   - CryptoSwift (~> 0.7.0)
+>>>>>>> master
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AWSCognito
     - AWSCore
     - AWSS3
-    - CryptoSwift
 
 SPEC CHECKSUMS:
   AWSCognito: 730f6795c78817ff86701844fb22ca40d129494b
   AWSCore: f5611be1c3edc38dbf9d6da0a5d2b6c4841d1c05
   AWSS3: f7a10f4c6bae46efc9a4588a1480a6761edcbc45
+<<<<<<< HEAD
+
+PODFILE CHECKSUM: 581e0dcba42c176a10d7499de02bc4256c5bb03d
+=======
   CryptoSwift: cd2158be2bf639aabc63ec804707c7137c90157c
 
 PODFILE CHECKSUM: 3a184508b295f8a9738bfe584b00fff6f9d17d67
+>>>>>>> master
 
 COCOAPODS: 1.5.0

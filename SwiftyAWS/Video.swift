@@ -17,7 +17,6 @@ import Foundation
 import AWSCognito
 import AWSS3
 import UIKit
-import CryptoSwift
 
 extension SwiftyAWS {
     

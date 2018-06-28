@@ -18,7 +18,6 @@ import Foundation
 import AWSCognito
 import AWSS3
 import UIKit
-import CryptoSwift
 
 public enum ImageType: String {
     case png = ".png"
@@ -49,6 +48,7 @@ public enum ErrorHandling: Error {
 }
 
 public class SwiftyAWS {
+//    let test = CommonCrypto()
     
     public typealias PermissionType = AWSS3ObjectCannedACL
     public typealias FileExtension = FileNamingConvetion
