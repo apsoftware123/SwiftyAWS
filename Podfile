@@ -9,13 +9,8 @@ target 'SwiftyAWS' do
 	pod 'AWSCore'
 	pod 'AWSCognito'
 	pod 'AWSS3'
-<<<<<<< HEAD
 #    pod 'CryptoSwift', '~> 0.7.0'
 #    pod 'IDZSwiftCommonCrypto', '~> 0.9.1'
-
-=======
-    pod 'CryptoSwift'
->>>>>>> master
 
   target 'SwiftyAWSTests' do
     inherit! :search_paths
