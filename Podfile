@@ -9,7 +9,7 @@ target 'SwiftyAWS' do
 	pod 'AWSCore'
 	pod 'AWSCognito'
 	pod 'AWSS3'
-    pod 'CryptoSwift'
+    pod 'CryptoSwift', '~> 0.7'
 
   target 'SwiftyAWSTests' do
     inherit! :search_paths
