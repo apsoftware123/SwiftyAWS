@@ -17,7 +17,8 @@ import Foundation
 import AWSCognito
 import AWSS3
 import UIKit
-import CommonCrypto
+//import CommonCrypto
+import CryptoSwift
 
 
 extension UIImage {
