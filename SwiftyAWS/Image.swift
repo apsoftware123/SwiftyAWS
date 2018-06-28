@@ -155,16 +155,16 @@ extension SwiftyAWS {
                     case .cancelled, .paused:
                         break
                     default:
-                        print("Error downloading1: \(request.key ?? "") Error: \(error)")
+                        print("Error downloading1: \(request.key) Error: \(error)")
                     }
                 } else {
-                    print("Error downloading: \(request.key ?? "") Error: \(error)")
+                    print("Error downloading: \(request.key) Error: \(error)")
                 }
                 
                 completionHandler(nil, nil, .errorDownloading(ErrorHandlingMessages.errorDownloading))
                 return nil
             }
-            print("Download complete for: \(request.key ?? "")")
+            print("Download complete for: \(request.key)")
             
             if task.result != nil {
                 //Construct the image here
