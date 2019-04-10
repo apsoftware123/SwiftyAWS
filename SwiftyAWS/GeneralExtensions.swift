@@ -32,12 +32,12 @@ extension UIImage {
     public func imageRepresentation(fileType: ImageType) -> Data? {
         switch fileType {
         case .png:
-            guard let png = UIImagePNGRepresentation(self) else {
+            guard let png = self.pngData() else {
                 return nil
             }
             return png
         default:
-            guard let jpeg = UIImageJPEGRepresentation(self, 1.0) else {
+            guard let jpeg = self.jpegData(compressionQuality: 1.0) else {
                 return nil
             }
             return jpeg
@@ -47,12 +47,12 @@ extension UIImage {
     public func convertToBase64(fileType: ImageType) -> String? {
         switch fileType {
         case .png:
-            guard let png = UIImagePNGRepresentation(self) else {
+            guard let png = self.pngData() else {
                 return nil
             }
             return png.base64EncodedString()
         default:
-            guard let jpeg = UIImageJPEGRepresentation(self, 1.0) else {
+            guard let jpeg = self.jpegData(compressionQuality: 1.0) else {
                 return nil
             }
             return jpeg.base64EncodedString()
